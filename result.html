@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result Page</title>
+    <style>
+      body {
+        background-color: #1c1c3c;
+        color: black;
+      }
+      .result-container {
+        border: 6px solid #b9e713;
+        padding: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: goldenrod;
+      }
+      .result-container h1 {
+        margin-bottom: 20px;
+        border: 3px solid greenyellow;
+        background-color: #b9e713;
+        padding: 10px;
+      }
+      .result-container p {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      button {
+        background-color: green;
+      }
+
+      button a {
+        color: white;
+        text-decoration: none;
+        padding: 30px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="result-container">
+      <h1>Student Result</h1>
+      <div id="result"></div>
+      <div class="btn">
+        <button><a href="./index.html">Form Entry</a></button>
+      </div>
+    </div>
+
+    <script>
+      // Retrieve data from localStorage
+      const resultData = JSON.parse(localStorage.getItem("resultData"));
+
+      // Display the result
+      const resultDiv = document.getElementById("result");
+      if (resultData) {
+        resultDiv.innerHTML = `
+        <p>Name: ${resultData.name}</p>
+        <p>Roll No: ${resultData.rollno}</p>
+        <p>Computer Marks: ${resultData.computer}</p>
+        <p>Biology Marks: ${resultData.biology}</p>
+        <p>Chemistry Marks: ${resultData.chemistry}</p>
+        <p>Chemistry Marks: ${resultData.totalMarks}</p>
+        <p>Percentage: ${resultData.percentage}%</p>
+      `;
+      } else {
+        resultDiv.innerHTML =
+          "<p>No result data found. Please go back and submit the form.</p>";
+      }
+    </script>
+  </body>
+</html>
